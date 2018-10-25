@@ -36,6 +36,7 @@ def draw_tiles(window, tiles):
         window.blit(text_tile, (tiles[i].pos_x + TILE_WIDTH / 3, tiles[i].pos_y + TILE_HEIGHT / 4))
     pg.display.update()
 
+
 def main():
     window = initialize_game()
     run = True
@@ -48,6 +49,7 @@ def main():
         draw_tiles(window, tiles)
 
     pg.quit()
+
 
 if __name__ == '__main__':
     main()
