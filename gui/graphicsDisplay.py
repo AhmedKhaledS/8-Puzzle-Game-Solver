@@ -19,7 +19,7 @@ def prepare_tiles():
     x, y = 0, 0
     tiles = []
     for i in range(8):
-        tiles.append(tile.Tile(x, y, TILE_WIDTH, TILE_HEIGHT, i+1))
+        tiles.append(tile.Tile(x, y, TILE_WIDTH, TILE_HEIGHT, i + 1))
         x = (x + TILE_WIDTH + 3 if x + TILE_WIDTH < WINDOW_WIDTH else 0)
         if (i+1) % 3 == 0:
             y = (y + TILE_HEIGHT + 3 if y + TILE_HEIGHT < WINDOW_HEIGHT else 0)
