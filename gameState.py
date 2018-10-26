@@ -94,6 +94,16 @@ class EightPuzzleState:
         sys.stdout.flush()
         print('blank-tile location: {}, {}'.format(self.blank_location[0], self.blank_location[1]))
 
+    def get_state_string(self):
+        state_string = ""
+        for i in range(3):
+            for j in range(3):
+                state_string += str(self.board[i][j])
+                state_string += ","
+        state_string = state_string[:-1]
+        return state_string
+
+
 def main():
     puzzle = EightPuzzleState([1, 0, 2, 3, 4, 5, 6, 7, 8])
     puzzle.print_board()
