@@ -103,6 +103,8 @@ class EightPuzzleState:
         state_string = state_string[:-1]
         return state_string
 
+    def get_state_stream(self):
+        return [self.board[i][j] for i in range(3) for j in range(3)]
 
 def main():
     puzzle = EightPuzzleState([1, 0, 2, 3, 4, 5, 6, 7, 8])

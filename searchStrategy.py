@@ -67,7 +67,7 @@ class Search:
 
 
 def main():
-    puzzle = EightPuzzleState([3, 1, 2, 0, 4, 5, 6, 7, 8])
+    puzzle = EightPuzzleState([8, 1, 2, 4, 5, 6, 0, 3, 7])
     
     search = Search()
 

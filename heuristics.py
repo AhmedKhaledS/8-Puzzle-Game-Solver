@@ -1,3 +1,6 @@
+from cmath import sqrt
+
+
 def get_heuristic_cost(gameState, heuristic='manhattan'):
     """
     Computes a heuristic cost for the input game state.
@@ -9,7 +12,7 @@ def get_heuristic_cost(gameState, heuristic='manhattan'):
     board = gameState.board
     for i in range(3):
         for j in range(3):
-            cost = cost + get_heuristic_distance(board[i][j] ,i , j, heuristic)
+            cost = cost + get_heuristic_distance(board[i][j], i, j, heuristic)
     return cost
 
 
