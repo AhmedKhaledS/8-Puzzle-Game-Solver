@@ -47,7 +47,7 @@ class Search:
         pass
 
 def main():
-    puzzle = EightPuzzleState([1, 0, 2, 3, 4, 5, 6, 7, 8])
+    puzzle = EightPuzzleState([0, 1, 2, 3, 4, 5, 6, 7, 8])
     search = Search()
     gameSolution = search.breadth_first_search(puzzle)
     gameSolution.print_game_solution()
