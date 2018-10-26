@@ -1,3 +1,4 @@
+import sys
 class EightPuzzleState:
 
     def __init__(self, numbers_order=[0, 1, 2, 3, 4, 5, 6, 7, 8]):
@@ -16,12 +17,14 @@ class EightPuzzleState:
         """
         self.board = []
         self.blank_location = 0, 0 # initially
+        self._iterator = 0
         for row in range(3):
             self.board.append([])
             for col in range(3):
-                self.board[row].append(numbers_order[row+col])
-                if numbers_order[row+col] == 0:
+                self.board[row].append(numbers_order[self._iterator])
+                if numbers_order[self._iterator] == 0:
                     self.blank_location = row, col
+                self._iterator += 1
 
     def is_goal(self):
         """
@@ -79,3 +82,34 @@ class EightPuzzleState:
         if (self.blank_location[1] != 0):
             moves.append('left')
         return moves # You have to check whether the returning array is empty or not in order to apply move.
+
+    def print_board(self):
+        for i in range(3):
+            for j in range(3):
+                sys.stdout.write('{} | '.format(self.board[i][j]))
+            sys.stdout.write('\n')
+        sys.stdout.flush()
+        print('blank-tile location: {}, {}'.format(self.blank_location[0], self.blank_location[1]))
+
+def main():
+    puzzle = EightPuzzleState([1, 0, 2, 3, 4, 5, 6, 7, 8])
+    puzzle.print_board()
+    print'Is goal state ? ', puzzle.is_goal()
+
+    moves = puzzle.get_successor_moves()
+
+    new_puzzle = puzzle.apply_move(moves[0])
+    new_puzzle.print_board()
+    print'Is goal state ? ', new_puzzle.is_goal()
+
+    new_puzzle = puzzle.apply_move(moves[1])
+    new_puzzle.print_board()
+    print'Is goal state ? ', new_puzzle.is_goal()
+
+    new_puzzle = puzzle.apply_move(moves[2])
+    new_puzzle.print_board()
+    print'Is goal state ? ', new_puzzle.is_goal()
+
+
+if __name__ == '__main__':
+    main()
