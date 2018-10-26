@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 import queue
+import priorityQueue
+
 
 
 class Container:
@@ -44,6 +46,19 @@ class Queue(Container):
 
 	def is_empty(self):
 		return self.qu.empty()
+
+class PriorityQueue(Container):
+	def __init__(self, cost_function):
+		self.priority_queue = priorityQueue.PriorityQueueWithFunction(cost_function)
+
+	def put_element(self, element):
+		self.priority_queue.push(element)
+
+	def get_element(self):
+		return self.priority_queue.pop()
+
+	def is_empty(self):
+		return self.priority_queue.isEmpty()
 
 def main():
 	qu = Queue()

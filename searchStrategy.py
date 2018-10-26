@@ -3,6 +3,7 @@ from gameSolution import GameSolution
 from gameState import EightPuzzleState
 import container
 import queue
+import heuristics
 
 class Search:
 
@@ -13,7 +14,8 @@ class Search:
         return self.generic_graph_search(gameState, container.Stack())
 
     def a_star_search(self, gameState):
-        pass
+        cost_function = lambda x : heuristics.get_heuristic_cost(x, 'manhattan')  
+        return self.generic_graph_search(gameState, container.PriorityQueue(cost_function))
     
     def generic_graph_search(self, gameState, container):
         container.put_element(gameState)
@@ -37,15 +39,18 @@ class Search:
 
 
 def main():
-    puzzle = EightPuzzleState([3, 1, 2, 6, 4, 5, 0, 7, 8])
+    puzzle = EightPuzzleState([3, 1, 2, 0, 4, 5, 6, 7, 8])
     
     search = Search()
 
     
-    gameSolution = search.breadth_first_search(puzzle)
-    gameSolution.print_game_solution()
+    # gameSolution = search.breadth_first_search(puzzle)
+    # gameSolution.print_game_solution()
 
-    gameSolution = search.depth_first_search(puzzle)
+    # gameSolution = search.depth_first_search(puzzle)
+    # gameSolution.print_game_solution()
+
+    gameSolution = search.a_star_search(puzzle)
     gameSolution.print_game_solution()
 
 if __name__ == '__main__':
