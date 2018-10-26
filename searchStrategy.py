@@ -1,4 +1,3 @@
-
 class Search:
 
     def breadth_first_search(self, gameState, frontier):

@@ -47,16 +47,16 @@ class EightPuzzleState:
         :param move: A string ('up', 'down', 'left', 'right') represents the new location of the blank tile
         """
         blank_row, blank_col = self.blank_location
-        if(move == 'up'):
+        if move == 'up':
             new_row = blank_row - 1
             new_col = blank_col
-        elif(move == 'down'):
+        elif move == 'down':
             new_row = blank_row + 1
             new_col = blank_col
-        elif(move == 'left'):
+        elif move == 'left':
             new_row = blank_row
             new_col = blank_col - 1
-        elif(move == 'right'):
+        elif move == 'right':
             new_row = blank_row
             new_col = blank_col + 1
         else:
@@ -73,13 +73,13 @@ class EightPuzzleState:
          Returns a list of strings ('up', 'down', 'left', 'right') representing the valid movements.
         """
         moves = []
-        if (self.blank_location[0] != 2):
+        if self.blank_location[0] != 2:
             moves.append('down')
-        if (self.blank_location[0] != 0):
+        if self.blank_location[0] != 0:
             moves.append('up')
-        if (self.blank_location[1] != 2):
+        if self.blank_location[1] != 2:
             moves.append('right')
-        if (self.blank_location[1] != 0):
+        if self.blank_location[1] != 0:
             moves.append('left')
         return moves # You have to check whether the returning array is empty or not in order to apply move.
 
