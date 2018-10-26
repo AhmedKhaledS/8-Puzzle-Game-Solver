@@ -30,7 +30,7 @@ class GraphicsPuzzle:
         font = pg.font.SysFont('Comic Sans MS', 120)
         for i in range(9):
             if tiles[i].number == 0:
-                pg.draw.rect(window, (215, 225, 242),
+                pg.draw.rect(window, (0, 0, 0),
                          (tiles[i].pos_x, tiles[i].pos_y, tiles[i].width, tiles[i].height))
             else:
                 pg.draw.rect(window, (87, 89, 91),
@@ -46,13 +46,11 @@ class GraphicsPuzzle:
         window = self.initialize_game()
         run = True
         while run:
-            pg.time.delay(1000)
-            print(state_count)
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     run = False
             tiles = self.prepare_tiles(solution_states[state_count])
             state_count += (1 if state_count + 1 < len(solution_states) else 0)
             self.draw_tiles(window, tiles)
-
+            pg.time.delay(500)
         pg.quit()
