@@ -5,16 +5,31 @@ import priorityQueue
 
 
 class Container:
+	"""
+	Container Interface to that supports two operations: get and put.
+	"""
 	@abstractmethod
 	def get_element(self):
+		"""
+		gets element from the container according to the container policy.
+		:return: element
+		"""
 		pass
 
 	@abstractmethod
 	def put_element(self, element):
+		"""
+		puts element into the container according to the container policy.
+		:param element: element to be inserted
+		"""
 		pass
 
 	@abstractmethod
 	def is_empty(self):
+		"""
+		Checks whether the container is empty or not.
+		:return: bool
+		"""
 		pass
 
 class Stack(Container):
