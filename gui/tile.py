@@ -1,4 +1,3 @@
-
 class Tile:
 
     def __init__(self, pos_x, pos_y, width, height, number):

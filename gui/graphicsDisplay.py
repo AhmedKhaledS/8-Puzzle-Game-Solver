@@ -2,10 +2,10 @@ import pygame as pg
 import tile
 
 
-
 WINDOW_WIDTH, WINDOW_HEIGHT = 480, 480
 TILE_WIDTH = WINDOW_WIDTH / 3
 TILE_HEIGHT = WINDOW_HEIGHT / 3
+
 
 class GraphicsPuzzle:
 
@@ -50,4 +50,3 @@ class GraphicsPuzzle:
             self.draw_tiles(window, tiles)
 
         pg.quit()
-
