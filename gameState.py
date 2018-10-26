@@ -15,6 +15,9 @@ class EightPuzzleState:
             | 6 | 8 | 7 |
             ------------
         """
+        self.parent = None
+        self.depth = 0
+
         self.board = []
         self.blank_location = 0, 0 # initially
         self._iterator = 0
@@ -91,24 +94,34 @@ class EightPuzzleState:
         sys.stdout.flush()
         print('blank-tile location: {}, {}'.format(self.blank_location[0], self.blank_location[1]))
 
+    def get_state_string(self):
+        state_string = ""
+        for i in range(3):
+            for j in range(3):
+                state_string += str(self.board[i][j])
+                state_string += ","
+        state_string = state_string[:-1]
+        return state_string
+
+
 def main():
     puzzle = EightPuzzleState([1, 0, 2, 3, 4, 5, 6, 7, 8])
     puzzle.print_board()
-    print'Is goal state ? ', puzzle.is_goal()
+    # print'Is goal state ? ', puzzle.is_goal()
 
-    moves = puzzle.get_successor_moves()
+    # moves = puzzle.get_successor_moves()
 
-    new_puzzle = puzzle.apply_move(moves[0])
-    new_puzzle.print_board()
-    print'Is goal state ? ', new_puzzle.is_goal()
+    # new_puzzle = puzzle.apply_move(moves[0])
+    # new_puzzle.print_board()
+    # print'Is goal state ? ', new_puzzle.is_goal()
 
-    new_puzzle = puzzle.apply_move(moves[1])
-    new_puzzle.print_board()
-    print'Is goal state ? ', new_puzzle.is_goal()
+    # new_puzzle = puzzle.apply_move(moves[1])
+    # new_puzzle.print_board()
+    # print'Is goal state ? ', new_puzzle.is_goal()
 
-    new_puzzle = puzzle.apply_move(moves[2])
-    new_puzzle.print_board()
-    print'Is goal state ? ', new_puzzle.is_goal()
+    # new_puzzle = puzzle.apply_move(moves[2])
+    # new_puzzle.print_board()
+    # print'Is goal state ? ', new_puzzle.is_goal()
 
 
 if __name__ == '__main__':
