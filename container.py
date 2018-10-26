@@ -1,18 +1,35 @@
 from abc import ABC, abstractmethod
 import queue
+import priorityQueue
+
 
 
 class Container:
+	"""
+	Container Interface to that supports two operations: get and put.
+	"""
 	@abstractmethod
 	def get_element(self):
+		"""
+		gets element from the container according to the container policy.
+		:return: element
+		"""
 		pass
 
 	@abstractmethod
 	def put_element(self, element):
+		"""
+		puts element into the container according to the container policy.
+		:param element: element to be inserted
+		"""
 		pass
 
 	@abstractmethod
 	def is_empty(self):
+		"""
+		Checks whether the container is empty or not.
+		:return: bool
+		"""
 		pass
 
 class Stack(Container):
@@ -44,6 +61,19 @@ class Queue(Container):
 
 	def is_empty(self):
 		return self.qu.empty()
+
+class PriorityQueue(Container):
+	def __init__(self, cost_function):
+		self.priority_queue = priorityQueue.PriorityQueueWithFunction(cost_function)
+
+	def put_element(self, element):
+		self.priority_queue.push(element)
+
+	def get_element(self):
+		return self.priority_queue.pop()
+
+	def is_empty(self):
+		return self.priority_queue.isEmpty()
 
 def main():
 	qu = Queue()
