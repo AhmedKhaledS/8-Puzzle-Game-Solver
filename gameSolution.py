@@ -1,14 +1,13 @@
 class GameSolution:
-
-    def __init__(self, goalState, expanded_states=[], max_depth=0):
-        """
-		A class holding the final solution of search algorithm.
-		path : list of states visited to reach the game solution
-		max_depth : maximum depth reached in the search tree
-		expanded_states: list of the expanded states from the start state to the end
-		"""
+    """
+        A class holding the final solution of search algorithm.
+        :attr path : list of states visited to reach the game solution
+        :attr max_depth : maximum depth reached in the search tree
+    """
+    def __init__ (self, goalState, expanded_states=[], max_depth=0, no_of_nodes=0):
         self.path = []
         self.max_depth = max_depth
+        self.no_of_nodes = no_of_nodes
         self.build_game_solution(goalState)
         self.expanded_states = [state for state in expanded_states]
 
@@ -42,4 +41,3 @@ class GameSolution:
         print('Number of expanded nodes: {}'.format(len(self.expanded_states)))
         print('Max Depth reached : ' + str(self.max_depth))
         # print path length
-        print('Total Path cost : ' + str(len(self.path)))

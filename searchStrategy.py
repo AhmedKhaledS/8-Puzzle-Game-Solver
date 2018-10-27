@@ -45,15 +45,17 @@ class Search:
       :param gameState: initial game state
       :param container: the container to hold the frontier list to be visited next
       :return: game solution object containing the solution of the game
-      """
+      """ 
       container.put_element(gameState)
       max_depth = 0
+      no_of_nodes = 0
       visited = set()
       while container.is_empty() == False:
         current = container.get_element()
         max_depth = max(max_depth, current.depth)
+        no_of_nodes = no_of_nodes + 1
         if current.is_goal():
-          return GameSolution(current, visited, max_depth)
+          return GameSolution(current, visited, max_depth, no_of_nodes)
         visited.add(current.get_state_string())
         moves = current.get_successor_moves()
         moves = moves[::-1]
@@ -67,16 +69,21 @@ class Search:
 
 
 def main():
-    puzzle = EightPuzzleState([8, 1, 2, 4, 5, 6, 0, 3, 7])
+    puzzle = EightPuzzleState([1, 2, 5, 3, 4, 0, 6, 7, 8])
     
     search = Search()
 
+    print("==== BFS ====")
     
-    # gameSolution = search.breadth_first_search(puzzle)
-    # gameSolution.print_game_solution()
+    gameSolution = search.breadth_first_search(puzzle)
+    gameSolution.print_game_solution()
 
-    # gameSolution = search.depth_first_search(puzzle)
-    # gameSolution.print_game_solution()
+    print("==== DFS ====")
+
+    gameSolution = search.depth_first_search(puzzle)
+    gameSolution.print_game_solution()
+
+    print("==== A* ====")
 
     gameSolution = search.a_star_search(puzzle)
     gameSolution.print_game_solution()
