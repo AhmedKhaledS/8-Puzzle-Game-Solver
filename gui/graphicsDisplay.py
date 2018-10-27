@@ -33,19 +33,18 @@ class GraphicsPuzzle:
                 pg.draw.rect(window, (0, 0, 0),
                          (tiles[i].pos_x, tiles[i].pos_y, tiles[i].width, tiles[i].height))
             else:
-                pg.draw.rect(window, (87, 89, 91),
+                pg.draw.rect(window, (255, 255, 255),
                          (tiles[i].pos_x, tiles[i].pos_y, tiles[i].width, tiles[i].height))
-                text_tile = font.render(str(tiles[i].number), False, (16, 39, 76))
+                text_tile = font.render(str(tiles[i].number), False, (25, 43, 102))
                 window.blit(text_tile, (tiles[i].pos_x + TILE_WIDTH / 3, tiles[i].pos_y + TILE_HEIGHT / 4))
         pg.display.update()
 
     def show(self, gameSolution):
         solution_states = gameSolution.path
-        print(len(solution_states))
         state_count = 0
         window = self.initialize_game()
         run = True
-        while run:
+        while run and len(solution_states):
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     run = False

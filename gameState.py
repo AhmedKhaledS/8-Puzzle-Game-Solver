@@ -92,7 +92,6 @@ class EightPuzzleState:
                 sys.stdout.write('{} | '.format(self.board[i][j]))
             sys.stdout.write('\n')
         sys.stdout.flush()
-        print('blank-tile location: {}, {}'.format(self.blank_location[0], self.blank_location[1]))
 
     def get_state_string(self):
         state_string = ""

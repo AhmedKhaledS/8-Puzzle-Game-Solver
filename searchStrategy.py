@@ -53,7 +53,7 @@ class Search:
         current = container.get_element()
         max_depth = max(max_depth, current.depth)
         if current.is_goal():
-          return GameSolution(current, max_depth)
+          return GameSolution(current, visited, max_depth)
         visited.add(current.get_state_string())
         moves = current.get_successor_moves()
         moves = moves[::-1]
